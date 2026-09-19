@@ -166,6 +166,22 @@
           } catch(err) {}
         }
 
+        // Fresh install / first-run guard: ensure clean unauthenticated start
+        try {
+          var INIT_FLAG = 'sohoj_hisab_installed_session_init_v2';
+          if (!window.localStorage.getItem(INIT_FLAG)) {
+            window.localStorage.removeItem('sohoj_hisab_active_sync_user');
+            // Clean legacy Firebase auth keys if restored via Android Auto-Backup
+            for (var i = window.localStorage.length - 1; i >= 0; i--) {
+              var k = window.localStorage.key(i);
+              if (k && k.indexOf('firebase:authUser:') === 0) {
+                window.localStorage.removeItem(k);
+              }
+            }
+            window.localStorage.setItem(INIT_FLAG, 'true');
+          }
+        } catch (e) {}
+
         // Global safeguard: if the screen stays blank on an older phone/WebView, show helpful UI
         window.addEventListener('DOMContentLoaded', function() {
           setTimeout(function() {

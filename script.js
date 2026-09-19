@@ -24596,9 +24596,27 @@ This typically indicates that your device does not have a healthy Internet conne
     }
   }
   var iw = "sohoj_hisab_active_sync_user";
+  var INIT_AUTH_FLAG = "sohoj_hisab_installed_session_init_v2";
+  (function checkFirstInstallAuthGuard() {
+    try {
+      if (typeof localStorage !== "undefined" && !localStorage.getItem(INIT_AUTH_FLAG)) {
+        localStorage.removeItem(iw);
+        for (let i = localStorage.length - 1; i >= 0; i--) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith("firebase:authUser:")) {
+            localStorage.removeItem(k);
+          }
+        }
+        localStorage.setItem(INIT_AUTH_FLAG, "true");
+      }
+    } catch (e) {
+      console.warn("Init auth guard check warning:", e);
+    }
+  })();
   function RI() {
     try {
       if (typeof localStorage > "u") return null;
+      if (!localStorage.getItem(INIT_AUTH_FLAG)) return null;
       const t10 = localStorage.getItem(iw);
       return t10 ? JSON.parse(t10) : null;
     } catch {
