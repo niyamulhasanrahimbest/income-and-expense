@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>সহজ হিসাব খাতা / ব্যক্তিগত ও ব্যবসায়িক</title>
+    <meta name="description" content="দৈনিক, মাসিক ও বাৎসরিক আয়-ব্যয়ের স্বয়ংক্রিয় হিসাব, সাব-মেনু হিসাব, বাজেট এবং জিমেইল ক্লাউড অটো-সিঙ্ক ও পার্মানেন্ট ব্যাকআপ।" />
+    <meta property="og:title" content="সহজ হিসাব খাতা / ব্যক্তিগত ও ব্যবসায়িক" />
+    <meta property="og:description" content="দৈনিক, মাসিক ও বাৎসরিক আয়-ব্যয়ের স্বয়ংক্রিয় হিসাব, সাব-মেনু হিসাব, বাজেট এবং জিমেইল ক্লাউড অটো-সিঙ্ক ও পার্মানেন্ট ব্যাকআপ।" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      html {
+        font-size: 16px;
+      }
+      body {
+        font-family: 'Roboto', 'Hind Siliguri', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #f8fafc;
+        background-image: 
+          radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
+          radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+          radial-gradient(at 50% 100%, rgba(139, 92, 246, 0.04) 0px, transparent 50%);
+        background-attachment: fixed;
+      }
+
+      /* Roboto font specifically applied to all numbers, inputs, buttons, tables and tabular figures */
+      input,
+      button,
+      select,
+      textarea,
+      table,
+      td,
+      th,
+      .font-mono,
+      .tabular-nums {
+        font-family: 'Roboto', 'Hind Siliguri', 'Plus Jakarta Sans', system-ui, sans-serif !important;
+        font-variant-numeric: tabular-nums;
+      }
+      /* Ensure logo dimensions apply properly with responsive scaling */
+      @media (min-width: 641px) {
+        .w-14 { width: 3.5rem !important; }
+        .h-14 { height: 3.5rem !important; }
+        .w-16 { width: 4rem !important; }
+        .h-16 { height: 4rem !important; }
+      }
+      @media (max-width: 640px) {
+        .w-14 { width: 2.75rem !important; }
+        .h-14 { height: 2.75rem !important; }
+        .w-16 { width: 3rem !important; }
+        .h-16 { height: 3rem !important; }
+      }
+      /* Custom fine scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 9999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      /* Custom Card Border Color Utilities - Clean 1px colored borders */
+      .border-emerald-500 { border-color: #10b981 !important; }
+      .border-rose-500 { border-color: #f43f5e !important; }
+      .border-blue-500 { border-color: #3b82f6 !important; }
+      .border-teal-500 { border-color: #14b8a6 !important; }
+      .border-purple-500 { border-color: #a855f7 !important; }
+      .border-amber-500 { border-color: #f59e0b !important; }
+      .border-pink-500 { border-color: #ec4899 !important; }
+      .border-indigo-500 { border-color: #6366f1 !important; }
+      /* Custom Press Card Backgrounds */
+      .press-hero-card {
+        background-color: #059669 !important;
+        background-image: none !important;
+        color: #ffffff !important;
+      }
+      /* Toast Notifications - High Contrast, Solid Background, Crystal Clear Readability */
+      .app-toast-alert,
+      .fixed.bottom-6.right-6 {
+        position: fixed !important;
+        bottom: 24px !important;
+        right: 24px !important;
+        left: auto !important;
+        top: auto !important;
+        z-index: 99999 !important;
+        background-color: #0f172a !important; /* Solid dark slate-900 */
+        color: #ffffff !important;
+        padding: 12px 20px !important;
+        border-radius: 16px !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4) !important;
+        border: 1.5px solid #334155 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        max-width: min(90vw, 450px) !important;
+        pointer-events: auto !important;
+      }
+      .app-toast-alert span,
+      .fixed.bottom-6.right-6 span {
+        color: #f8fafc !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+      }
+      .app-toast-alert .text-emerald-400,
+      .fixed.bottom-6.right-6 .text-emerald-400 {
+        color: #34d399 !important;
+        font-weight: 800 !important;
+        font-size: 16px !important;
+      }
+      @media (max-width: 640px) {
+        .app-toast-alert,
+        .fixed.bottom-6.right-6 {
+          left: 16px !important;
+          right: 16px !important;
+          bottom: 16px !important;
+          max-width: calc(100vw - 32px) !important;
+          justify-content: center !important;
+          text-align: center !important;
+        }
+      }
+      .bottom-6 { bottom: 1.5rem !important; }
+      .right-6 { right: 1.5rem !important; }
+      .border-slate-700 { border-color: #334155 !important; }
+      .text-emerald-400 { color: #34d399 !important; }
+      .text-slate-100 { color: #f1f5f9 !important; }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased min-h-screen">
+    <div id="root"></div>
+
+    <!-- WebView Storage Shim for Android APK & file:// protocol -->
+    <script>
+      (function() {
+        try {
+          var test = '__test_ls__';
+          window.localStorage.setItem(test, '1');
+          window.localStorage.removeItem(test);
+        } catch (e) {
+          console.warn('WebView localStorage disabled/restricted, enabling memory storage shim', e);
+          var mem = {};
+          try {
+            Object.defineProperty(window, 'localStorage', {
+              value: {
+                getItem: function(k) { return mem.hasOwnProperty(k) ? mem[k] : null; },
+                setItem: function(k, v) { mem[k] = String(v); },
+                removeItem: function(k) { delete mem[k]; },
+                clear: function() { mem = {}; },
+                get length() { return Object.keys(mem).length; },
+                key: function(i) { return Object.keys(mem)[i] || null; }
+              },
+              writable: true,
+              configurable: true
+            });
+          } catch(err) {}
+        }
+
+        // Global safeguard: if the screen stays blank on an older phone/WebView, show helpful UI
+        window.addEventListener('DOMContentLoaded', function() {
+          setTimeout(function() {
+            var root = document.getElementById('root');
+            if (root && (!root.children || root.children.length === 0)) {
+              root.innerHTML = '<div style="display:flex;min-height:80vh;align-items:center;justify-content:center;padding:24px;text-align:center;font-family:sans-serif;color:#334155;">' +
+                '<div style="background:#ffffff;padding:28px;border-radius:20px;border:1px solid #e2e8f0;box-shadow:0 10px 25px rgba(0,0,0,0.05);max-width:360px;width:100%;">' +
+                '<div style="font-size:42px;margin-bottom:12px;">📒</div>' +
+                '<h3 style="font-size:18px;font-weight:bold;margin-bottom:8px;color:#0f172a;">সহজ হিসাব খাতা লোড হচ্ছে...</h3>' +
+                '<p style="font-size:13px;color:#64748b;line-height:1.5;margin-bottom:16px;">অ্যাপটি চালু করতে কয়েক সেকেন্ড সময় লাগতে পারে। যদি না আসে তবে নিচের বাটনে ট্যাপ করুন।</p>' +
+                '<button onclick="location.reload()" style="background:#059669;color:#ffffff;border:none;padding:10px 22px;border-radius:12px;font-weight:600;font-size:14px;cursor:pointer;">পুনরায় চালু করুন</button>' +
+                '</div></div>';
+            }
+          }, 3500);
+        });
+      })();
+    </script>
+
+    <!-- Compatibility Loader: Supports both Vite Dev/Production and Android WebView (file:// protocol) -->
+    <script>
+      if (window.location.protocol === 'file:' && !document.querySelector('script[src*="assets/"]')) {
+        var s = document.createElement('script');
+        s.src = './script.js';
+        s.defer = true;
+        document.body.appendChild(s);
+      }
+    </script>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
+

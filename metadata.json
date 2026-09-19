@@ -1,0 +1,6 @@
+{
+  "name": "সহজ হিসাব খাতা / ব্যক্তিগত ও ব্যবসায়িক",
+  "description": "দৈনিক, মাসিক ও বাৎসরিক আয়-ব্যয়ের স্বয়ংক্রিয় হিসাব, সাব-মেনু হিসাব, বাজেট এবং জিমেইল ক্লাউড অটো-সিঙ্ক ও পার্মানেন্ট ব্যাকআপ।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

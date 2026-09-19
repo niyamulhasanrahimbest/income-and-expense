@@ -1,0 +1,13 @@
+{
+  "projectId": "income-and-cost-book",
+  "appId": "1:925317857736:web:44016b062688fdd03700fd",
+  "apiKey": "AIzaSyB8o2lC_c07VX66bp38yg5mq8i8Fw_uJiE",
+  "authDomain": "income-and-cost-book.firebaseapp.com",
+  "databaseURL": "https://income-and-cost-book-default-rtdb.firebaseio.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "income-and-cost-book.firebasestorage.app",
+  "messagingSenderId": "925317857736",
+  "measurementId": "",
+  "oAuthClientId": "",
+  "recaptchaSiteKey": ""
+}

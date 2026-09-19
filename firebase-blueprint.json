@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "UserData": {
+      "title": "UserData",
+      "description": "User profile and complete synced accounting ledger for personal and business finances",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The unique Firebase Auth User ID"
+        },
+        "email": {
+          "type": "string",
+          "description": "User Gmail address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "User avatar photo URL"
+        },
+        "lastSyncedAt": {
+          "type": "string",
+          "description": "ISO timestamp of the last successful sync"
+        },
+        "personalTransactions": {
+          "type": "array",
+          "description": "Complete list of personal expense and income transactions"
+        },
+        "businessTransactions": {
+          "type": "array",
+          "description": "Complete list of business expense and income transactions"
+        },
+        "personalBudget": {
+          "type": "object",
+          "description": "Monthly and category budgets for personal finances"
+        },
+        "businessBudget": {
+          "type": "object",
+          "description": "Monthly and category budgets for business finances"
+        },
+        "settings": {
+          "type": "object",
+          "description": "User settings such as language, currency, and date format"
+        },
+        "customCategories": {
+          "type": "array",
+          "description": "User defined custom expense/income categories"
+        },
+        "personalCatOverrides": {
+          "type": "array",
+          "description": "Customized personal categories and budget thresholds"
+        },
+        "businessCatOverrides": {
+          "type": "array",
+          "description": "Customized business categories and budget thresholds"
+        },
+        "businessOrders": {
+          "type": "array",
+          "description": "Business sales and customer delivery orders"
+        },
+        "appCustomIcon": {
+          "type": "string",
+          "description": "Custom user uploaded application icon/logo"
+        },
+        "appLogoFit": {
+          "type": "string",
+          "description": "Logo fit setting: cover or contain"
+        },
+        "activeMode": {
+          "type": "string",
+          "description": "Active ledger mode: personal or business"
+        },
+        "otherPersons": {
+          "type": "array",
+          "description": "List of persons for other transactions such as family or third-party accounts (e.g. Shahin, Abba, Amma)"
+        },
+        "otherTransactions": {
+          "type": "array",
+          "description": "List of deposits and itemized expenses under other persons' accounts"
+        }
+      },
+      "required": ["userId", "email", "lastSyncedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserData",
+      "description": "The root document containing the entire encrypted & verified financial ledger for the authenticated user"
+    }
+  }
+}
